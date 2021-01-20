@@ -58,8 +58,12 @@ export class ConversionMonedaComponent implements OnInit {
       )
       .subscribe((value) => {
         if (!this.compare(value, this.fechaActual)) {
-          Swal.fire("Error",  'La fecha digitada debe ser no mayor a la fecha actual: ' +
-          this.fechaActual, "error");
+          Swal.fire(
+            'Error',
+            'La fecha digitada debe ser no mayor a la fecha actual: ' +
+              this.fechaActual,
+            'error'
+          );
           this.formConversion.get('fecha').setValue(this.fechaActual);
         } else {
           this.actualizarResultado();
@@ -97,19 +101,24 @@ export class ConversionMonedaComponent implements OnInit {
   }
 
   actualizarResultado() {
-    this.servCambioMoneda
-      .consultarMoneda(this.fecha.value, this.Moneda.value)
-      .subscribe((res) => {
-        //se obtiene el valor de la propiedad de la moneda por el cúal se va a hacer el cambio
-        for (const property in res.rates) {
-          this.valorCambio = res.rates[property];
-        }
-        //se obtiene el resultado del cambio
-        this.resultado = this.Euros.value * this.valorCambio;
-      },
-      (e)=>{
-        this.resultado=0;
-      }
-      );
+    if (this.Euros.value > 0) {
+      this.servCambioMoneda
+        .consultarMoneda(this.fecha.value, this.Moneda.value)
+        .subscribe(
+          (res) => {
+            //se obtiene el valor de la propiedad de la moneda por el cúal se va a hacer el cambio
+            for (const property in res.rates) {
+              this.valorCambio = res.rates[property];
+            }
+            //se obtiene el resultado del cambio
+            this.resultado = this.Euros.value * this.valorCambio;
+          },
+          (e) => {
+            this.resultado = 0;
+          }
+        );
+    } else {
+      this.resultado = 0;
+    }
   }
 }
