@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, ɵConsole } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { respuestaApi } from '../models/respuestaApi';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +13,9 @@ export class ApiCambioMonedaService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerSelect(): Observable<respuestaApi> {
+  obtenerSelect(): Observable<any> {
 
-    return this.http.get<respuestaApi>(this.base+"latest");
+    return this.http.get<any>(this.base+"latest");
   }
 
   consultarMoneda(fecha: string, symbols: string): Observable<any> {

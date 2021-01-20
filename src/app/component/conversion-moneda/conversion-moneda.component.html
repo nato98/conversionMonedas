@@ -20,12 +20,12 @@
                     <label>Euros: </label>
                 </div>
                 <div class="columna">
-                    <input type="number" formControlName="Euros">
-                </div>
-                <div *ngIf="Euros.invalid && (Euros.dirty || Euros.touched)">
-                    <mat-error * ngIf="Euros.errors.required">
-                        *Campo requerido
-                    </mat-error>
+                    <input type="number" formControlName="Euros" min="0">
+                    <div *ngIf="Euros.invalid && (Euros.dirty || Euros.touched)">
+                        <mat-error *ngIf="Euros.errors.required">
+                            *Campo requerido
+                        </mat-error>
+                    </div>
                 </div>
             </div>
 
@@ -35,11 +35,12 @@
                     <label>Moneda: </label>
                 </div>
                 <div class="columna">
-                    <Select formControlName="moneda">
+                    <select formControlName="moneda">
                       <option *ngFor="let element of monedas">{{element}}</option>
-                    </Select>
+                    </select>
                 </div>
             </div>
+
             <br><br><br><br>
             <div class="modal-body">
                 <div class="columna">
