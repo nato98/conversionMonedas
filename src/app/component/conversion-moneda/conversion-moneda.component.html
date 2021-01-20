@@ -11,7 +11,7 @@
                     <label>Fecha: </label>
                 </div>
                 <div class="columna md">
-                    <input type="date" formControlName="fecha">
+                    <input type="date" formControlName="fecha" max="{{fechaActual}}">
                     <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
                         <mat-error *ngIf="fecha.errors.required">
                             *Campo requerido
@@ -29,6 +29,9 @@
                     <div *ngIf="Euros.invalid && (Euros.dirty || Euros.touched)">
                         <mat-error *ngIf="Euros.errors.required">
                             *Campo requerido
+                        </mat-error>
+                        <mat-error *ngIf="Euros.errors.min">
+                            *El campo debe ser igual o superior a 1
                         </mat-error>
                     </div>
                 </div>

@@ -106,6 +106,10 @@ export class ConversionMonedaComponent implements OnInit {
         }
         //se obtiene el resultado del cambio
         this.resultado = this.Euros.value * this.valorCambio;
-      });
+      },
+      (e)=>{
+        this.resultado=0;
+      }
+      );
   }
 }
