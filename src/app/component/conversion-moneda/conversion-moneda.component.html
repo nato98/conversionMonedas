@@ -12,6 +12,11 @@
                 </div>
                 <div class="columna md">
                     <input type="date" formControlName="fecha">
+                    <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+                        <mat-error *ngIf="fecha.errors.required">
+                            *Campo requerido
+                        </mat-error>
+                    </div>
                 </div>
             </div>
             <br><br><br><br>
