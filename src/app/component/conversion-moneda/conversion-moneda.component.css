@@ -1,0 +1,40 @@
+.main {
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
+
+input,
+select {
+    width: 150px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+    text-align: center;
+    align-items: center;
+    border: 0;
+}
+
+.columna {
+    width: 40%;
+    float: left;
+}
+
+
+/*@media (max-width: 500px) {
+    .columna {
+        width: auto;
+        float: none;
+    }
+}*/

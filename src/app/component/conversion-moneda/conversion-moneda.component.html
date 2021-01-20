@@ -1,0 +1,54 @@
+<mat-card class="main">
+    <mat-card-header>
+        <mat-card-title>Sistema para la conversión de moneda</mat-card-title>
+        <mat-card-subtitle>Por favor, ingresar los siguientes datos</mat-card-subtitle>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+        <form [formGroup]="this.formConversion">
+            <div class="modal-body">
+                <div class="columna md">
+                    <label>Fecha: </label>
+                </div>
+                <div class="columna md">
+                    <input type="date" formControlName="fecha">
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="modal-body">
+                <div class="columna">
+                    <label>Euros: </label>
+                </div>
+                <div class="columna">
+                    <input type="number" formControlName="Euros">
+                </div>
+                <div *ngIf="Euros.invalid && (Euros.dirty || Euros.touched)">
+                    <mat-error * ngIf="Euros.errors.required">
+                        *Campo requerido
+                    </mat-error>
+                </div>
+            </div>
+
+            <br><br><br><br>
+            <div class="modal-body">
+                <div class="columna">
+                    <label>Moneda: </label>
+                </div>
+                <div class="columna">
+                    <Select formControlName="moneda">
+                      <option *ngFor="let element of monedas">{{element}}</option>
+                    </Select>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="modal-body">
+                <div class="columna">
+                    <label>Resultado: </label>
+                </div>
+                <div class="columna">
+                    <label>{{resultado}}   {{Moneda.value}}</label>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
